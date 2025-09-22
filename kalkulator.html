@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Kalkulator Sederhana</title>
+</head>
+<body>
+  <h3>Kalkulator Sederhana</h3>
+
+  <label>Input Bilangan 1</label><br>
+  <input type="text" id="bil1"><br><br>
+
+  <label>Input Bilangan 2</label><br>
+  <input type="text" id="bil2"><br><br>
+
+  <button onclick="hitung('+')">+</button>
+  <button onclick="hitung('-')">-</button>
+  <button onclick="hitung('*')">x</button>
+  <button onclick="hitung('/')">/</button><br><br>
+
+  <label>Output</label><br>
+  <input type="text" id="hasil" readonly>
+
+  <script>
+    function hitung(op) {
+      var a = parseFloat(document.getElementById("bil1").value);
+      var b = parseFloat(document.getElementById("bil2").value);
+      var h = 0;
+
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById("hasil").value = "Input salah";
+        return;
+      }
+
+      if (op === "+") h = a + b;
+      if (op === "-") h = a - b;
+      if (op === "*") h = a * b;
+      if (op === "/") {
+        if (b === 0) {
+          document.getElementById("hasil").value = "Error /0";
+          return;
+        }
+        h = a / b;
+      }
+
+      document.getElementById("hasil").value = h;
+    }
+  </script>
+</body>
+</html>
